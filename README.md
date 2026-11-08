@@ -9,8 +9,7 @@
 ---
 
 ## 1. Concepção e Objetivo
-O *Open Book* visa resolver a disparidade e o desperdício de materiais didáticos entre estudantes, criando um catálogo centralizado e confiável para doação e empréstimo temporário de livros, apostilas e equipamentos de apoio acadêmico.
-
+O *Open Book* é um catálogo comunitário que facilita o acesso de estudantes a materiais didáticos e incentiva o reaproveitamento de livros, apostilas e equipamentos de apoio acadêmico. Pela plataforma, estudantes podem cadastrar materiais e solicitar empréstimos ou doações de itens disponíveis.
 ---
 
 ## 2. Requisitos Funcionais
