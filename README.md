@@ -92,7 +92,7 @@ Todas as rotas começam com `/api` e usam JSON. Erros de validação, registro i
 | GET | `/movimentacoes/{id}` | Consultar movimentação e histórico |
 | PATCH | `/movimentacoes/{id}/status` | Alterar status para `ATRASADO` ou `DEVOLVIDO` quando permitido |
 
-Exemplo de cadastro de estudante:
+Exemplo de cadastro de estudante no sistema:
 
 ```json
 {"nome":"Ana Silva","email":"ana@universidade.edu.br","curso":"Engenharia de Software","telefone":"44999999999"}
