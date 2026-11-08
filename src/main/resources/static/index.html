@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#142c49">
+  <title>OpenBook — comunidade de compartilhamento</title>
+  <link rel="stylesheet" href="tailwind.css">
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+<body class="min-h-screen bg-slate-50 text-slate-800 antialiased">
+<div class="app-shell min-h-screen">
+  <aside class="sidebar" aria-label="Navegação principal">
+    <a class="brand" href="#inicio" aria-label="OpenBook, ir para o início"><span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 6.8c-2.6-2-5.5-2.2-8-1v12c2.5-1.2 5.4-1 8 1m0-11.9c2.6-2 5.5-2.2 8-1v12c-2.5-1.2-5.4-1-8 1m0-11.9v11.9"/></svg></span><span><strong>openbook</strong><small>Compartilhe conhecimento</small></span></a>
+    <div class="nav-label">Sua biblioteca</div>
+    <nav class="navigation" aria-label="Áreas do OpenBook">
+      <button type="button" class="tab active transition-colors duration-200" data-tab="itens" aria-current="page"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M4 4h5v16H4zM9 6h5v14H9zM14 8l3.8-1 3.1 12-3.9 1z"/></svg><span>Catálogo</span></button>
+      <button type="button" class="tab transition-colors duration-200" data-tab="usuarios"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="9" cy="8" r="3"/><path d="M3.5 19v-1.5a5.5 5.5 0 0 1 11 0V19zm12-13a3 3 0 0 1 0 5.9M17 13a4.5 4.5 0 0 1 3.5 4.4V19H17"/></svg><span>Estudantes</span></button>
+      <button type="button" class="tab transition-colors duration-200" data-tab="movimentos"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M4 8h14m-4-4 4 4-4 4M20 16H6m4-4-4 4 4 4"/></svg><span>Movimentações</span></button>
+    </nav>
+    <div class="sidebar-note"><span class="note-icon" aria-hidden="true">✦</span><p>Um espaço para compartilhar o que ajuda a aprender.</p></div>
+  </aside>
+  <div class="page-column flex min-h-screen min-w-0 flex-col">
+    <header class="topbar"><div><span class="topbar-title">Biblioteca comunitária</span><span class="topbar-subtitle"> / OpenBook</span></div><span class="topbar-right">Feito para aprender junto</span></header>
+    <main id="inicio" class="main-content flex-1">
+      <div id="mensagem" role="status" aria-live="polite" hidden></div>
+      <section class="panel" id="itens" aria-labelledby="titulo-itens">
+        <div class="hero"><div class="hero-copy"><p class="hero-kicker">Boas-vindas ao OpenBook</p><h1>Uma estante feita para compartilhar.</h1><p>Encontre e compartilhe livros, apostilas e materiais de estudo com outros estudantes.</p><a href="#acervo" class="hero-link transition-colors duration-200">Explorar o catálogo <span aria-hidden="true">↓</span></a></div><div class="hero-image" role="img" aria-label="Livros organizados em uma estante de biblioteca"></div></div>
+        <div id="acervo" class="section-heading"><div><p class="section-caption">Explore os materiais</p><h2 id="titulo-itens">Catálogo</h2><p>Encontre o que você precisa ou disponibilize um material para a comunidade.</p></div><a class="button button-primary" href="#editor-item" data-open-editor="editor-item">+ Cadastrar material</a></div>
+        <div class="surface catalog-surface"><div class="surface-heading"><div><h3>Encontre um material</h3><p>Use os filtros para encontrar materiais do seu interesse.</p></div></div>
+          <form id="filtro" class="filters"><label>Tipo<select name="tipo"><option value="">Todos os tipos</option><option value="LIVRO">Livro</option><option value="APOSTILA">Apostila</option><option value="EQUIPAMENTO">Equipamento</option></select></label><label>Disciplina<input name="disciplina" placeholder="Ex.: Programação"></label><label>Disponibilidade<select name="disponivel"><option value="">Todas</option><option value="true">Disponíveis</option><option value="false">Indisponíveis</option></select></label><button class="button button-secondary">Filtrar</button></form>
+        </div>
+        <div class="list-heading"><h3>Materiais da comunidade</h3><span>Livros, apostilas e equipamentos</span></div><div id="lista-itens" class="cards" aria-live="polite"><p class="empty">Carregando materiais...</p></div>
+        <details class="editor surface" id="editor-item"><summary>+ Cadastrar ou editar material</summary><p class="editor-help">Preencha as informações para compartilhar um material.</p><form id="form-item" class="form-grid"><input name="id" type="hidden"><label>Responsável<select name="usuarioId" required></select></label><label>Título<input name="titulo" maxlength="150" required></label><label>Tipo<select name="tipo" required><option value="LIVRO">Livro didático</option><option value="APOSTILA">Apostila</option><option value="EQUIPAMENTO">Equipamento de apoio</option></select></label><label>Disciplina<input name="disciplina" maxlength="100" required></label><label data-item="LIVRO">Numeração<input name="numeracao" maxlength="40"></label><label data-item="LIVRO">Edição<input name="edicao" maxlength="40"></label><label data-item="APOSTILA">Número de páginas<input type="number" min="1" name="numeroPaginas"></label><label data-item="EQUIPAMENTO">Tipo de equipamento<input name="tipoEquipamento" maxlength="100"></label><label data-item="EQUIPAMENTO">Estado de conservação<input name="estadoConservacao" maxlength="100"></label><div class="form-actions"><button class="button button-primary">Salvar material</button><button type="button" class="button button-secondary" data-reset="form-item">Limpar</button></div></form></details>
+      </section>
+      <section class="panel" id="usuarios" aria-labelledby="titulo-usuarios" hidden><div class="section-heading section-heading-inner"><div><p class="section-caption">Quem faz parte</p><h1 id="titulo-usuarios">Estudantes</h1><p>Cadastre e consulte as pessoas que compartilham materiais.</p></div><a class="button button-primary" href="#editor-usuario" data-open-editor="editor-usuario">+ Cadastrar estudante</a></div><div class="list-heading"><h3>Estudantes cadastrados</h3></div><div id="lista-usuarios" class="cards" aria-live="polite"><p class="empty">Carregando estudantes...</p></div><details class="editor surface" id="editor-usuario"><summary>+ Cadastrar ou editar estudante</summary><p class="editor-help">Cadastre seus dados para participar da comunidade.</p><form id="form-usuario" class="form-grid"><input type="hidden" name="id"><label>Nome completo<input name="nome" maxlength="150" required></label><label>E-mail institucional<input name="email" type="email" maxlength="150" required></label><label>Curso<input name="curso" maxlength="100" required></label><label>Telefone<input name="telefone" maxlength="30" required></label><div class="form-actions"><button class="button button-primary">Salvar estudante</button><button type="button" class="button button-secondary" data-reset="form-usuario">Limpar</button></div></form></details></section>
+      <section class="panel" id="movimentos" aria-labelledby="titulo-movimentos" hidden><div class="section-heading section-heading-inner"><div><p class="section-caption">Acompanhe os materiais</p><h1 id="titulo-movimentos">Movimentações</h1><p>Registre empréstimos ou doações e acompanhe cada etapa.</p></div><a class="button button-primary" href="#editor-movimento" data-open-editor="editor-movimento">+ Registrar movimentação</a></div><details class="editor surface" id="editor-movimento" open><summary>+ Registrar movimentação</summary><p class="editor-help">Selecione um estudante e um material disponível.</p><form id="form-movimento" class="form-grid"><label>Estudante<select name="usuarioId" required></select></label><label>Material disponível<select name="itemId" required></select></label><label>Operação<select name="tipo"><option value="EMPRESTIMO">Empréstimo</option><option value="DOACAO">Doação</option></select></label><div class="form-actions"><button class="button button-primary">Registrar</button></div></form></details><div class="list-heading"><h3>Histórico de movimentações</h3></div><div id="lista-movimentos" class="cards" aria-live="polite"><p class="empty">Carregando movimentações...</p></div></section>
+    </main>
+    <footer class="footer"><span><strong>openbook</strong> <span class="footer-divider">·</span> Compartilhar faz o conhecimento circular.</span><span>Projeto acadêmico · ODS 4 e 10</span></footer>
+  </div>
+</div>
+</body>
+</html>
